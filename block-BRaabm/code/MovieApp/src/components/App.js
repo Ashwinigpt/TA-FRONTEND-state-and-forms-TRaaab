@@ -1,11 +1,11 @@
 import Header from './Header';
-import Foods from './Foods';
+import MovieList from './MovieList';
 
 function App(){
     return(
           <>
           <Header />
-          <Foods />
+          <MovieList />
           </>
         );
 }
