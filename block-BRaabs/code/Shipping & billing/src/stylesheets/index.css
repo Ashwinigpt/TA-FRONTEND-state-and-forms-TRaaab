@@ -137,7 +137,7 @@ body {
 .flex {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .flex-45 {
@@ -167,4 +167,8 @@ input {
   padding: 0.5rem 0rem;
   outline: none;
   border: 1px solid rgb(223, 219, 219);
+}
+p{
+  margin-left: 18rem;
+  margin-bottom: -2rem;
 }

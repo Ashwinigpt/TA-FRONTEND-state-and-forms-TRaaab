@@ -1,55 +1,54 @@
-import React from "react";
+import React from 'react';
 
-class Shippingbilling extends React.Component {
+class ShippingBilling extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            address: '',
-            zipcode: '',
-            city: '',
-            country: '',
-
-            copy: false,
-
             shipping: {
-                address: '',
-                zipcode: '',
-                city: '',
-                country: '',
+                address: "",
+                zip: "",
+                city: "",
+                country: ""
             },
-        };
+            billing: {
+                address: "",
+                zip: "",
+                city: "",
+                country: ""
+            },
+            isSame: false
+        }
     }
     copyBilling = ({ target }) => {
         if (target.checked) {
             this.setState({ copy: true });
             this.state.shipping.address = this.state.address;
-            this.state.shipping.zipcode = this.state.zipcode;
+            this.state.shipping.zip = this.state.zip;
             this.state.shipping.city = this.state.city;
             this.state.shipping.country = this.state.country;
         } else {
-            this.setState({ copy: true });
+            this.setState({ copy: false });
             this.state.shipping.address = '';
-            this.state.shipping.zipcode = '';
+            this.state.shipping.zip = '';
             this.state.shipping.city = '';
             this.state.shipping.country = '';
         }
     };
-    handleShipping = (event) => {
-        let name = event.target.name;
-        this.setState = {
-            [name]: event.target.value,
-        };
+
+    handleShipping = ({ target }) => {
+        const { name, value } = target;
+        this.setState(state => ({
+            shipping: { ...state.shipping, [name]: value }
+        }));
     };
-    handleBilling = ({ target }) => {
-        let name = target.name;
-        this.setState = ({
-            shipping: {
-                [name]: target.value,
-            },
-        });
+
+    handleCheckbox = () => {
+        this.setState(({ isSame }) => ({ isSame: !isSame }));
     };
 
     render() {
+        const { isSame, billing, shipping } = this.state;
+        const billingData = isSame ? shipping : billing;
         return (
             <>
                 <h1>Controlled Component</h1>
@@ -61,80 +60,70 @@ class Shippingbilling extends React.Component {
                             type="text"
                             name="address"
                             onChange={this.handleShipping}
-                            value={this.state.address}
-                            placeholder="  e.g Dharamshala Himachal Pradesh"
-                        ></input>
-                        <label htmlFor="zipcode">ZIP/Postal Code</label>
+                            placeholder="  e.g. Khaniyara road, Dharamshala"
+                        />
+                        <label htmlFor="zip">ZIP/Postal Code</label>
                         <input
-                            type="text"
-                            name="zipcode"
+                            type="number"
+                            name="zip"
                             onChange={this.handleShipping}
-                            value={this.state.zipcode}
-                            placeholder="  e.g 176218"
-                        ></input>
+                            placeholder="  e.g. 176218"
+                        />
                         <label htmlFor="city">City</label>
                         <input
                             type="text"
                             name="city"
                             onChange={this.handleShipping}
-                            value={this.state.city}
-                            placeholder="  e.g Himachal Pradesh"
-                        ></input>
+                            placeholder="  e.g. Himachal Pradesh"
+                        />
                         <label htmlFor="country">Country</label>
                         <input
-                            type="text"
                             name="country"
                             onChange={this.handleShipping}
-                            value={this.state.country}
-                            placeholder="  e.g India"
-                        ></input>
+                            type="text"
+                            placeholder="  e.g. India"
+                        />
                     </div>
                     <div className="flex-45">
                         <h2>Billing Address</h2>
-                        <label htmlFor="address">Same as Billing Address?</label>
-                        <input
-                            type="checkbox"
-                            name="same"
-                            id="same"
-                            onChange={this.handleBilling}
-                        />
+                        
+                        <p>Same as the Shipping Address?</p>
+                        <input onChange={this.handleCheckbox} type="checkbox" />
+                        
                         <label htmlFor="address">Address</label>
                         <input
+                            value={billingData.address}
+                            className="input"
                             type="text"
-                            name="address"
-                            onChange={this.handleBilling}
-                            value={this.state.shipping.address}
-                            placeholder="  e.g Dharamshala Himachal Pradesh"
-                        ></input>
-                        <label htmlFor="zipcode">ZIP/Postal Code</label>
+                            placeholder="  e.g. Khaniyara road, Dharamshala"
+                        />
+                        <label htmlFor="zip">ZIP/Postal Code</label>
                         <input
-                            type="text"
-                            name="zipcode"
-                            onChange={this.handleBilling}
-                            value={this.state.shipping.zipcode}
-                            placeholder="  e.g 176218"
-                        ></input>
+                            value={billingData.zip}
+                            className="input"
+                            type="number"
+                            name="zip"
+                            placeholder="  e.g. 176218"
+                        />
                         <label htmlFor="city">City</label>
                         <input
+                            value={billingData.city}
+                            className="input"
                             type="text"
-                            name="city"
-                            onChange={this.handleBilling}
-                            value={this.state.shipping.city}
-                            placeholder="  e.g Himachal Pradesh"
-                        ></input>
+                            placeholder="  e.g. Himachal Pradesh"
+                        />
                         <label htmlFor="country">Country</label>
                         <input
+                            className="input"
+                            value={billingData.country}
                             type="text"
-                            name="country"
-                            onChange={this.handleBilling}
-                            value={this.state.shipping.country}
-                            placeholder="  e.g India"
-                        ></input>
+                            placeholder="  e.g. India"
+                        />
                     </div>
                 </section>
             </>
-        )
+        );
     }
 }
 
-export default Shippingbilling;
+export default ShippingBilling;
