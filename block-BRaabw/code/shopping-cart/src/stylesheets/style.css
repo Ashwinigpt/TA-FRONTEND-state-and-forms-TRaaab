@@ -318,6 +318,7 @@ table {
 header{
     padding:1rem ;
     padding-bottom:.75rem;
+    margin-top: 2rem;
     font-style: italic;
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     border-radius: .5rem;
