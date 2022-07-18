@@ -15,7 +15,7 @@ class Item extends React.Component{
             <>
             <article className='item'>
                 {this.props.details.isFreeShipping ? <><span  className='shipping'>Free Shipping</span> </> : null} 
-                <div>   
+                <div className='image'>   
                     <img src={`./static/products/${this.props.details.sku}_1.jpg`}/>
                 </div>
                 <h4>{this.props.details.title}</h4>
