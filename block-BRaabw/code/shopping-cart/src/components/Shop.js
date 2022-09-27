@@ -3,7 +3,7 @@ import Cart from "./Cart";
 import Products from "./Products";
 import Filters from "./Filters";
 
-import { products } from "../data/data.json";
+import products from "../data/data.json";
 
 class Shop extends React.Component {
     constructor(props) {
@@ -31,7 +31,7 @@ class Shop extends React.Component {
         if (!this.state.cartToggle) {
             return (
                 <>
-                    <img src="./static/bag-icon.png" />
+                    <img src="./static/bag-icon.png" alt="" />
                     <span className="flex justify-center align-center count">{sumItems}</span>
                 </>
             );
@@ -98,7 +98,6 @@ class Shop extends React.Component {
             acc = acc + cv.quantity;
             return acc;
         }, 0);
-
 
         return (
             <>
