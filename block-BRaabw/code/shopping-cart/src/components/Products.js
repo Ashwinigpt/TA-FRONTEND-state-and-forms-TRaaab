@@ -10,7 +10,6 @@ class Products extends React.Component {
         }
     }
 
-
     handleSort = ({ target }) => {
         this.setState({ sort: target.value });
     };
@@ -42,7 +41,7 @@ class Products extends React.Component {
 
     render() {
         let { sort } = this.state;
-        let products = this.handleSortedProducts(sort, this.props.selectedSizes, this.props.products);
+        let products = this.handleSortedProducts(sort, this.props.selectedSizes, this.props.products.products);
         return (
             <>
                 <main className="flex-75">
@@ -73,8 +72,6 @@ class Products extends React.Component {
             </>
         );
     }
-
 }
-
 
 export default Products;

@@ -1,6 +1,6 @@
 import Shop from './Shop';
 
-function App () {
+function App() {
     return (
         <>
             <Shop />
@@ -8,4 +8,4 @@ function App () {
     );
 }
 
-export default Shop;
+export default App;

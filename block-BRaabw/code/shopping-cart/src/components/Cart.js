@@ -45,9 +45,9 @@ class Cart extends React.Component {
                                         </div>
                                         <div className='flex-18'>
                                             <span onClick={() => this.props.deleteItem(item.id)} className='kattam'>X</span>
-                                            <h5 className='paise'>$ {item.price}</h5>
+                                            <h5 className='paise'>${item.price}</h5>
                                             <p className='flex justify-between align-center'>
-                                                <span onClick={() => this.props.decrementQuantity(item.id)} className='btnba'>-</span> 
+                                                <span onClick={() => this.props.decrementQuantity(item.id)} className='btnba'>-</span>
                                                 <span onClick={() => this.props.incrementQuantity(item.id)} className='btnba'>+</span>
                                             </p>
                                         </div>
@@ -56,7 +56,7 @@ class Cart extends React.Component {
                             );
                         })}
                     </ul>
-                    
+
                     <article className='checkout'>
                         <h6>SUBTOTAL <span>$ {subTotal}</span></h6>
                         <button onClick={() => { this.handleCheckout(subTotal) }}>CHECKOUT</button>
